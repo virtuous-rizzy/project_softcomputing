@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 1 - Soft Computing</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background: #f5f8fc;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #007bff, #00c6ff);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+            line-height: 1;
+        }
+
+        header .subtitle {
+            display: block;
+            margin-top: 10px;
+            font-size: 18px;
+            opacity: 0.95;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 950px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #007bff;
+            border-bottom: 2px solid #00c6ff;
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            margin-top: 15px;
+            color: #444;
+        }
+
+        p {
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        ul {
+            line-height: 1.6;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: #007bff;
+            background: #e7f1ff;
+            padding: 8px 15px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .back-link:hover {
+            background: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Tugas 1 - Soft Computing</h1>
+        <span class="subtitle">Logika Fuzzy, Jaringan Saraf Tiruan, dan Algoritma Genetika</span>
+    </header>
+
+    <div class="container">
+        <a href="{{ url_for('home') }}" class="back-link">← Kembali ke Daftar Tugas</a>
+
+        <section>
+            <h2>1. Logika Fuzzy</h2>
+            <h3>Pengertian</h3>
+            <p>
+                Logika fuzzy merupakan metode komputasi yang meniru cara berpikir manusia dalam menangani ketidakpastian dan nilai yang samar.
+                Tidak seperti logika biner yang hanya mengenal nilai 0 dan 1, logika fuzzy memperbolehkan nilai di antara keduanya seperti 0.2, 0.5, atau 0.8.
+            </p>
+
+            <h3>Penerapan</h3>
+            <p>
+                Logika fuzzy banyak digunakan pada sistem kontrol otomatis seperti AC pintar, mesin cuci otomatis, pengaturan kecepatan kendaraan,
+                serta sistem pengambilan keputusan berbasis ketidakpastian.
+            </p>
+
+            <h3>Kelebihan</h3>
+            <ul>
+                <li>Dapat menangani data yang tidak pasti atau samar.</li>
+                <li>Mendekati cara berpikir manusia.</li>
+                <li>Implementasi mudah pada sistem kontrol.</li>
+            </ul>
+
+            <h3>Kekurangan</h3>
+            <ul>
+                <li>Kesulitan dalam menentukan fungsi keanggotaan yang tepat.</li>
+                <li>Memerlukan banyak aturan jika sistem kompleks.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>2. Jaringan Saraf Tiruan (Artificial Neural Network)</h2>
+            <h3>Pengertian</h3>
+            <p>
+                Jaringan saraf tiruan (JST) merupakan sistem komputasi yang terinspirasi dari struktur otak manusia.
+                JST terdiri dari neuron-neuron buatan yang saling terhubung untuk memproses informasi dan mempelajari pola dari data.
+            </p>
+
+            <h3>Penerapan</h3>
+            <p>
+                JST digunakan dalam berbagai bidang seperti pengenalan wajah, prediksi harga saham, deteksi penyakit,
+                klasifikasi citra, dan pemrosesan bahasa alami.
+            </p>
+
+            <h3>Kelebihan</h3>
+            <ul>
+                <li>Mampu mempelajari pola yang kompleks dari data.</li>
+                <li>Dapat beradaptasi terhadap data baru.</li>
+                <li>Cocok untuk data besar (big data).</li>
+            </ul>
+
+            <h3>Kekurangan</h3>
+            <ul>
+                <li>Memerlukan waktu pelatihan yang lama.</li>
+                <li>Membutuhkan banyak data dan sumber daya komputasi.</li>
+                <li>Sulit dijelaskan secara interpretatif (black-box).</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>3. Algoritma Genetika</h2>
+            <h3>Pengertian</h3>
+            <p>
+                Algoritma genetika adalah metode optimasi dan pencarian yang terinspirasi oleh proses evolusi biologis seperti seleksi alam,
+                crossover (persilangan), dan mutasi. Algoritma ini digunakan untuk mencari solusi terbaik dari berbagai kemungkinan.
+            </p>
+
+            <h3>Penerapan</h3>
+            <p>
+                Algoritma genetika digunakan pada optimasi rute (seperti Traveling Salesman Problem), perancangan jaringan, penjadwalan produksi,
+                serta pemecahan masalah-masalah non-linear yang kompleks.
+            </p>
+
+            <h3>Kelebihan</h3>
+            <ul>
+                <li>Mampu mencari solusi global yang optimal.</li>
+                <li>Tidak mudah terjebak pada solusi lokal.</li>
+                <li>Dapat diterapkan pada berbagai jenis masalah.</li>
+            </ul>
+
+            <h3>Kekurangan</h3>
+            <ul>
+                <li>Memerlukan banyak iterasi (generasi) untuk hasil terbaik.</li>
+                <li>Tidak selalu menjamin solusi paling optimal dalam waktu singkat.</li>
+                <li>Membutuhkan parameter yang tepat (populasi, probabilitas mutasi, dll).</li>
+            </ul>
+        </section>
+    </div>
+
+</body>
+</html>

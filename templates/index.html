@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soft Computing - Daftar Tugas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        .profile-info {
+            text-align: center;
+            margin-top: 20px; /* Jarak dari judul */
+            margin-bottom: 25px; /* Jarak ke deskripsi */
+            font-size: 1.1em; /* Sedikit lebih besar */
+            color: #333;
+            line-height: 1.5;
+        }
+    </style>
+    </head>
+<body>
+    <div class="container">
+        <h1>📘 Daftar Tugas Soft Computing</h1>
+        
+        <div class="profile-info">
+            <p><strong>{{ nama }}</strong></p>
+            <p><strong>{{ nim }}</strong></p>
+        </div>
+        <p class="intro">Klik salah satu folder tugas di bawah ini untuk melihat isi detailnya.</p>
+
+        <div class="folder-container">
+            {% for tugas in daftar_tugas %}
+            <a href="{{ url_for('tugas', num=tugas.nomor) }}" class="folder">
+                <div class="folder-icon">📁</div>
+                <div class="folder-content">
+                    <div class="folder-title">Tugas {{ tugas.nomor }}</div>
+                    <div class="folder-desc">{{ tugas.deskripsi }}</div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

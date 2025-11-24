@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tugas 3 - TSP Genetic Algorithm</title>
+    <title>Tugas 3 - TSP Visualisasi</title>
     
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
 
@@ -23,23 +23,36 @@
         .form-container { display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 25px; align-items: flex-end; }
         .form-group { display: flex; flex-direction: column; flex: 1; min-width: 150px; }
         .form-group label { font-weight: bold; margin-bottom: 8px; color: #555; font-size: 15px; }
-        .form-group input { padding: 10px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; -moz-appearance: textfield; }
+        .form-group input { padding: 10px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; }
         .submit-btn { padding: 10px 20px; font-size: 16px; font-weight: bold; color: white; background: #007bff; border: none; border-radius: 8px; cursor: pointer; transition: 0.3s; height: 42px; }
         .submit-btn:hover { background: #0056b3; }
         .submit-btn:disabled { background: #a0a0a0; cursor: not-allowed; }
 
-        /* Style khusus tombol download */
+        /* Style untuk Gambar Hasil */
+        .result-image-container {
+            text-align: center;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 10px;
+            background: #fafafa;
+        }
+        .result-image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
         .download-btn {
             display: inline-block;
-            margin-top: 10px;
-            padding: 10px 20px;
+            margin-top: 15px;
+            padding: 10px 25px;
             background-color: #28a745;
             color: white;
             border: none;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
-            cursor: pointer;
             transition: 0.3s;
         }
         .download-btn:hover { background-color: #218838; }
@@ -53,15 +66,17 @@
 <body>
     <header>
         <h1>Tugas 3 - Soft Computing</h1>
-        <span class="subtitle">TSP - Genetic Algorithm</span>
+        <span class="subtitle">TSP - Genetic Algorithm (Visualisasi)</span>
     </header>
 
     <div class="container">
         
         <section>
             <h2>Deskripsi</h2>
-            <b>Traveling Salesperson Problem (TSP)</b> adalah masalah optimasi klasik di mana tujuannya adalah mencari rute terpendek yang mengunjungi setiap kota tepat satu kali dan kembali ke kota asal.
-                Pada tugas ini, kita menggunakan <b>Algoritma Genetika</b> dengan representasi Array/List untuk mencari solusi optimal berdasarkan matriks jarak yang telah ditentukan.
+            <p>
+                <b>Traveling Salesperson Problem (TSP)</b> mencari rute terpendek mengunjungi setiap kota tepat satu kali.
+                Program ini menggunakan <b>Algoritma Genetika</b> dan akan menampilkan <b>Visualisasi Rute</b> hasil optimasi.
+            </p>
         </section>
 
         <section>
@@ -79,22 +94,24 @@
                     <label for="mutasi">Mutasi Rate</label>
                     <input type="number" step="0.01" min="0" max="1" id="mutasi" name="mutasi" value="{{ mut_val }}" required>
                 </div>
-                <button type="submit" class="submit-btn" id="submit-btn">Jalankan GA</button>
+                <button type="submit" class="submit-btn" id="submit-btn">Jalankan & Visualisasi</button>
             </form>
         </section>
 
-        <!-- === TOMBOL DOWNLOAD (Hanya muncul jika ada hasil CSV) === -->
-        {% if csv_data %}
+        {% if image_data %}
         <section>
-            <h2>Download Hasil</h2>
-            <p>Klik tombol di bawah untuk mengunduh hasil rute terbaik dalam format CSV.</p>
-            <button onclick="downloadCSV()" class="download-btn">Download hasil_tsp.csv</button>
+            <h2>Visualisasi Rute Terbaik</h2>
+            <div class="result-image-container">
+                <img src="data:image/png;base64,{{ image_data }}" alt="Visualisasi TSP">
+                <br>
+                <a href="data:image/png;base64,{{ image_data }}" download="tsp_result_route.png" class="download-btn">
+                    Download Gambar Rute
+                </a>
+            </div>
         </section>
         {% endif %}
-        <!-- ======================================================== -->
-
         <section>
-            <h2>Output Eksekusi Program</h2>
+            <h2>Log Eksekusi Program</h2>
             <pre class="output-box">{{ output }}</pre>
         </section>
         
@@ -106,7 +123,7 @@
         <a href="/" class="back-link">← Kembali ke Daftar Tugas</a>
     </div>
 
-    <div id="toast">Codingan berhasil dijalankan!</div>
+    <div id="toast">Proses Selesai!</div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
@@ -114,7 +131,7 @@
     <script>
         function showLoading() {
             var btn = document.getElementById('submit-btn');
-            btn.innerHTML = 'Menjalankan...'; 
+            btn.innerHTML = 'Memproses...'; 
             btn.disabled = true;             
         }
 
@@ -125,24 +142,6 @@
             setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
         }
         {% endif %}
-
-        // --- FUNGSI DOWNLOAD CSV DARI BROWSER ---
-        function downloadCSV() {
-            var csvContent = `{{ csv_data|safe }}`;
-            
-            var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-            
-            var link = document.createElement("a");
-            if (link.download !== undefined) { 
-                var url = URL.createObjectURL(blob);
-                link.setAttribute("href", url);
-                link.setAttribute("download", "hasil_tsp.csv");
-                link.style.visibility = 'hidden';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            }
-        }
     </script>
 
 </body>

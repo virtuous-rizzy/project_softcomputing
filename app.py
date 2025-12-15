@@ -11,11 +11,8 @@ def home():
     daftar_tugas = [
         {"nomor": 1, "deskripsi": "Pengenalan Soft Computing"},
         {"nomor": 2, "deskripsi": "Algoritma Genetika – Knapsack Problem"},
-        {
-            "nomor": 3,
-            "deskripsi": "Algoritma Genetika - Traveling Salesperson Problem (TSP)",
-        },
-        {"nomor": 4, "deskripsi":  "Algoritma Genetika - Adaptive Neuro Fuzzy Inference System (ANFIS)"},
+        {"nomor": 3,"deskripsi": "Algoritma Genetika - Traveling Salesperson Problem (TSP)"},
+        {"nomor": 4,"deskripsi": "Algoritma Genetika - Adaptive Neuro Fuzzy Inference System (ANFIS)"},
     ]
     nama_mahasiswa = "MUHAMMAD RIZKY AKBAR"
     nim_mahasiswa = "2411016310005"
@@ -116,6 +113,7 @@ def tugas3():
         show_toast=show_toast,
     )
 
+
 # --- TUGAS 4: ANFIS (BARU) ---
 @app.route("/tugas/4")
 def tugas4():
@@ -158,10 +156,12 @@ def tugas4():
         y_val=y_param,
         show_toast=show_toast,
     )
-    
+
+
 @app.route("/tugas/<int:num>")
 def tugas(num):
     return render_template(f"tugas{num}.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)

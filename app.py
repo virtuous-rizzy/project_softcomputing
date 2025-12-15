@@ -15,8 +15,7 @@ def home():
             "nomor": 3,
             "deskripsi": "Algoritma Genetika - Traveling Salesperson Problem (TSP)",
         },
-        {"nomor": 4, "deskripsi": "Coming soon"},
-        {"nomor": 5, "deskripsi": "Coming soon"},
+        {"nomor": 4, "deskripsi":  "Algoritma Genetika - Adaptive Neuro Fuzzy Inference System (ANFIS)"},
     ]
     nama_mahasiswa = "MUHAMMAD RIZKY AKBAR"
     nim_mahasiswa = "2411016310005"
@@ -117,7 +116,49 @@ def tugas3():
         show_toast=show_toast,
     )
 
+# --- TUGAS 4: ANFIS (BARU) ---
+@app.route("/tugas/4")
+def tugas4():
+    show_toast = True if "x" in request.args else False
 
+    # Ambil input parameter x dan y, defaultnya 3 dan 4
+    x_param = request.args.get("x", "3")
+    y_param = request.args.get("y", "4")
+
+    filename = "anfis.py"
+    script_path = os.path.join(app.root_path, filename)
+
+    if not os.path.exists(script_path):
+        return "ERROR: File anfis.py tidak ditemukan."
+
+    # Jalankan script python dengan argumen x dan y
+    result = subprocess.run(
+        [sys.executable, script_path, x_param, y_param],
+        capture_output=True,
+        text=True,
+    )
+
+    output = result.stdout
+    if result.stderr:
+        output += "\nERROR:\n" + result.stderr
+
+    # Baca source code
+    kode_konten = ""
+    try:
+        with open(script_path, "r", encoding="utf-8") as f:
+            kode_konten = f.read()
+    except Exception:
+        kode_konten = "Gagal baca file."
+
+    return render_template(
+        "tugas4.html",
+        output=output,
+        kode=kode_konten,
+        x_val=x_param,
+        y_val=y_param,
+        show_toast=show_toast,
+    )
+    
 @app.route("/tugas/<int:num>")
 def tugas(num):
     return render_template(f"tugas{num}.html")

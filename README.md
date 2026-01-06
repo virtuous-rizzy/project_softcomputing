@@ -62,34 +62,34 @@ project_softcomputing/
 ## 🚀 Cara Menjalankan Aplikasi
 
 ### 🔹 1. Clone Repository
-
 bash
 git clone https://github.com/virtuous-rizzy/project_softcomputing.git
-🔹 2. Masuk ke Folder Proyek
+### 🔹 2. Masuk ke Folder Proyek
 cd project_softcomputing
 
-🔹 3. Install Dependency
+###🔹 3. Install Dependency
 
 Pastikan Python 3 sudah terinstall, lalu jalankan:
 
 pip install flask
 
-
 (Jika ada library tambahan, bisa ditambahkan ke requirements.txt)
 
-🔹 4. Jalankan Server Flask
+###🔹 4. Jalankan Server Flask
 python app.py
 
-🔹 5. Buka di Browser
+###🔹 5. Buka di Browser
 http://localhost:5000
 
-🛠️ Teknologi yang Digunakan
+---
+
+## 🛠️ Teknologi yang Digunakan
 🐍 Python 3
 🚀 Flask Framework
 🌐 HTML, CSS, JavaScript
 📐 Konsep Soft Computing & Optimasi
 
-🎯 Tujuan Proyek
+## 🎯 Tujuan Proyek
 Mengimplementasikan algoritma Soft Computing secara nyata
 Memahami konsep optimasi dan sistem cerdas
 Menyajikan hasil algoritma dalam bentuk aplikasi web

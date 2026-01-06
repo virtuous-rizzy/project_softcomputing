@@ -19,7 +19,7 @@ Seluruh algoritma diimplementasikan dalam Python dan disajikan melalui antarmuka
 
 ## 📂 Struktur Repository
 
-### project_softcomputing/
+project_softcomputing/
 │
 ├── app.py # File utama Flask (routing & server)
 ├── anfis.py # Implementasi algoritma ANFIS
@@ -36,8 +36,6 @@ Seluruh algoritma diimplementasikan dalam Python dan disajikan melalui antarmuka
 │ └── img/
 │
 └── README.md # Dokumentasi proyek
-
-
 ---
 
 ## 🧠 Algoritma yang Digunakan
@@ -88,6 +86,8 @@ http://localhost:5000
 - 🚀 Flask Framework
 - 🌐 HTML, CSS, JavaScript
 - 📐 Konsep Soft Computing & Optimasi
+
+---
 
 ## 🎯 Tujuan Proyek
 - Mengimplementasikan algoritma Soft Computing secara nyata

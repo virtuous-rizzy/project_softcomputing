@@ -18,6 +18,8 @@ Seluruh algoritma diimplementasikan dalam Python dan disajikan melalui antarmuka
 ---
 
 ## 📂 Struktur Repository
+
+```text
 project_softcomputing/
 │
 ├── app.py                 # File utama Flask (routing & server)
@@ -35,7 +37,7 @@ project_softcomputing/
 │   └── img/
 │
 └── README.md              # Dokumentasi proyek
-
+```
 ---
 
 ## 🧠 Algoritma yang Digunakan

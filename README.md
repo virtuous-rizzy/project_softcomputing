@@ -19,23 +19,7 @@ Seluruh algoritma diimplementasikan dalam Python dan disajikan melalui antarmuka
 
 ## 📂 Struktur Repository
 
-project_softcomputing/
-│
-├── app.py # File utama Flask (routing & server)
-├── anfis.py # Implementasi algoritma ANFIS
-├── knapsack.py # Implementasi Knapsack Problem
-├── TSP_from_array.py # Implementasi Traveling Salesman Problem
-│
-├── templates/ # File HTML untuk tampilan web
-│ ├── index.html
-│ └── (halaman lainnya)
-│
-├── static/ # Asset frontend
-│ ├── css/
-│ ├── js/
-│ └── img/
-│
-└── README.md # Dokumentasi proyek
+
 ---
 
 ## 🧠 Algoritma yang Digunakan
